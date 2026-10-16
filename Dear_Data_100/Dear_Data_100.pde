@@ -34,11 +34,23 @@ void draw() {
 
     // Draws the circle - this will repeatedly draw circles 60 times per second untill i > = 7
     noFill(); // the circles have no colour
-    stroke(0); // the outline of the circle is black 
-    ellipse(x, y, 100, 100); // positions the circle and adjusts the size of the circle 
+    stroke(0); // the outline of the circle is black
+    ellipse(x, y, 100, 100); // positions the circle and adjusts the size of the circle
+    fill(0);
+    line(x, y - 50, x, y + 50); // draws the line through the circle
+
+    // Labels for daytime and night-time
+    fill(255,218,3);
+    textSize(16);
+
+    text("D", x - 25, y + 5);
+    
+    fill(39,2,193);
+    textSize(16);
+    text("N", x + 25, y + 5);
 
     // draws the name of the day above the circle
-    fill(0); 
+    fill(0);
     textSize(14);
     text(days[i], x, y - 65); // positions the text above the circle (y - 65) the -65 means that the tittle is 65 pixels higher than the circles that i created
   }
