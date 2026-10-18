@@ -38,14 +38,24 @@ void draw() {
     ellipse(x, y, 100, 100); // positions the circle and adjusts the size of the circle
     fill(0);
     line(x, y - 50, x, y + 50); // draws the line through the circle
+    
+    // Draw one test dot on the daytime arc
+    float angle = radians(180);
 
+    float dotX = x + cos(angle) * 42;
+    float dotY = y + sin(angle) * 42;
+
+    fill(255, 0, 0);
+    noStroke();
+    ellipse(dotX, dotY, 10, 10);
+    
     // Labels for daytime and night-time
-    fill(255,218,3);
+    fill(255, 218, 3);
     textSize(16);
 
     text("D", x - 25, y + 5);
-    
-    fill(39,2,193);
+
+    fill(39, 2, 193);
     textSize(16);
     text("N", x + 25, y + 5);
 
