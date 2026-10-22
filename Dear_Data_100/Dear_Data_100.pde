@@ -17,7 +17,7 @@ PFont Normal;
 PFont Week;
 
 void setup() {
-  size(1000, 850); //sets the size for the canvas
+  size(1000, 800); //sets the size for the canvas
 
   Tittlefont = loadFont("BellMTItalic-48.vlw");
   Normal = loadFont("Calibri-LightItalic-48.vlw");
@@ -72,30 +72,84 @@ void draw() {
     text(days[i], x, y - 65); // positions the text above the circle (y - 65) the -65 means that the tittle is 65 pixels higher than the circles that i created
   }
   stroke(80, 53, 2);
-  strokeWeight(1);
-  line(100, 650, 900, 650); // this will create the line that seperates the data from the key which will be used to read the data
+  strokeWeight(1.5);
+  line(100, 590, 900, 590); // this will create the line that seperates the data from the key which will be used to read the data
 
   fill(80, 53, 2);
   textAlign(CENTER);
   textFont(Tittlefont, 20);
   textSize(26);
-  text("Key", 500, 690);
+  text("Key", 500, 630);
 
   fill(80, 53, 2);
   textAlign(LEFT);
   textFont(Week, 16);
-  text("COSRX Salicylic Acid Cleanser", 165, 735);
+  text("COSRX Salicylic Acid Cleanser", 165, 680);
 
   fill(184, 111, 101);
   noStroke();
-  ellipse(150, 730, 12, 12);
-  
-    fill(80, 53, 2);
+  ellipse(150, 675, 12, 12);
+
+  fill(80, 53, 2);
   textAlign(LEFT);
   textFont(Week, 16);
-  text("Medicube Vitamin C Toner Pads", 165, 765);
-  
-   fill(255, 206, 113);
+  text("Medicube Vitamin C Toner Pads", 165, 710);
+
+  fill(255, 206, 113);
   noStroke();
-  ellipse(150, 760, 12, 12);
+  ellipse(150, 705, 12, 12);
+
+  fill(80, 53, 2);
+  textAlign(LEFT);
+  textFont(Week, 16);
+  text("Purito Retinol+Retinal serum", 165, 740);
+
+  fill(179, 125, 216);
+  noStroke();
+  ellipse(150, 735, 12, 12);
+
+  fill(80, 53, 2);
+  textAlign(LEFT);
+  textFont(Week, 16);
+  text("Skin1004 Probio-Cica Moisturiser", 165, 770);
+
+  fill(103, 85, 68);
+  noStroke();
+  ellipse(150, 765, 12, 12);
+
+  fill(80, 53, 2);
+  textAlign(LEFT);
+  textFont(Week, 16);
+  text("Nivea Thiamidol serum", 450, 770);
+
+  fill(252, 66, 188);
+  noStroke();
+  ellipse(440, 765, 12, 12);
+
+  fill(80, 53, 2);
+  textAlign(LEFT);
+  textFont(Week, 16);
+  text("Mixoon bean essence", 450, 740);
+
+  fill(107, 152, 115);
+  noStroke();
+  ellipse(440, 735, 12, 12);
+  
+   fill(80, 53, 2);
+  textAlign(LEFT);
+  textFont(Week, 16);
+  text("Whipped Ddalva Cleanser", 450, 710);
+
+  fill(255, 203, 237);
+  noStroke();
+  ellipse(440, 705, 12, 12);
+  
+   fill(80, 53, 2);
+  textAlign(LEFT);
+  textFont(Week, 16);
+  text("Hylaronic Acid eye patches", 450, 680);
+
+  fill(111, 170, 245);
+  noStroke();
+  ellipse(440, 675, 12, 12);
 }
