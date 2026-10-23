@@ -1,155 +1,90 @@
-//lists the days of the week as a variable to use later
-String[] days = {
-  "Monday", "Tuesday", "Wednesday",
-  "Thursday", "Friday", "Saturday", "Sunday" // variable for the days of the week listed as an array
-};
-//the x position for each circle that is drawn, the rectangular brackets show that it is an array (a list of things)
-int[] xPositions = {
-  140, 380, 620, 860, 260, 500, 740
-};
-//the y position for each circle that is drawn, the rectangular brackets show that it is an array (a list of things)
-int[] yPositions = {
-  220, 220, 220, 220, 450, 450, 450
-};
-
 PFont Tittlefont;
-PFont Normal;
-PFont Week;
 
-void setup() {
-  size(1000, 800); //sets the size for the canvas
+int[] circleX = {100, 250, 400, 600, 850, 750,
+  150, 350, 500, 900, 650, 320};
+int[] circleY = { 140, 300, 290, 250, 180, 450,
+  550, 650, 500, 600, 350, 400};
 
-  Tittlefont = loadFont("BellMTItalic-48.vlw");
-  Normal = loadFont("Calibri-LightItalic-48.vlw");
-  Week = loadFont("Calibri-Bold-48.vlw");
+int[] diamondX = {
+  200, 420, 700, 900, 150, 350,
+  600, 800, 250, 460, 750, 490
+};
+
+int[] diamondY = {
+  100, 180, 120, 350, 470, 550,
+  650, 530, 200, 600, 300, 370
+};
+
+color[] circleColours = { // this array sets the colours of the circles
+  color(255, 60, 60),
+  color(255, 140, 0),
+  color(255, 220, 40),
+  color(120, 255, 60),
+  color(0, 230, 150),
+  color(0, 220, 255),
+  color(60, 130, 255),
+  color(130, 80, 255),
+  color(220, 70, 255),
+  color(255, 80, 170),
+  color(255, 120, 100),
+  color(190, 255, 100)
+};
+
+color[] diamondColours = { // this array sets the colours of the circles
+  color(255, 60, 60),
+  color(255, 140, 0),
+  color(255, 220, 40),
+  color(120, 255, 60),
+  color(0, 230, 150),
+  color(0, 220, 255),
+  color(60, 130, 255),
+  color(130, 80, 255),
+  color(220, 70, 255),
+  color(255, 80, 170),
+  color(255, 120, 100),
+  color(190, 255, 100)
+};
+
+
+void setup()
+{
+  size(1000, 750);
+  Tittlefont = loadFont("Calibri-Bold-48.vlw");
 }
 
-void draw() {
-  background(240, 232, 218); // sets the colour of the background
+void draw()
+{
+  background(0);
 
-  // creates tittle and colours the etxt black while making sure the text is centered
-  fill(80, 53, 2);
+  fill(255);
   textAlign(CENTER);
-  textSize(24);
-  textFont(Tittlefont, 32);
-  text("Skin Diary", 500, 50);
+  textSize(30);
+  textFont(Tittlefont, 30);
+  text("SKIN DIARY", 500, 50); // sets tittle
 
-  textSize(10);
-  textFont(Normal, 18);
+  textSize(20);
   text("Week 1", 400, 80);// sets subtittle for each week
   text("Week 2", 500, 80);
   text("Week 3", 600, 80);
 
-  // draws the 7 circles and stops after i is greater than 7 which is the number of days
-  for (int i = 0; i < days.length; i++) {
-
-    // positions the circle
-    int x = xPositions[i];
-    int y = yPositions[i];
-
-    // Draws the circle - this will repeatedly draw circles 60 times per second untill i > = 7
-    noFill(); // the circles have no colour
-    stroke(80, 53, 2); // the outline of the circle is black
-    ellipse(x, y, 100, 100); // positions the circle and adjusts the size of the circle
-    fill(80, 53, 2);
-    line(x, y - 50, x, y + 50); // draws the line through the circle
-
-    // Labels for daytime and night-time
-    fill(80, 53, 2);
-    textFont(Week, 18);
-    textSize(15);
-
-    text("AM", x - 25, y + 65);
-
-    fill(80, 53, 2);
-    textSize(15);
-    text("PM", x + 25, y + 65);
-
-    // draws the name of the day above the circle
-    fill(80, 53, 2);
-    textSize(16);
-    textFont(Normal, 20);
-    text(days[i], x, y - 65); // positions the text above the circle (y - 65) the -65 means that the tittle is 65 pixels higher than the circles that i created
+  for (int i = 0; i < 12; i++) // Repeats for every coordinate in the array,
+    // increasing i by one each time to select the next position.
+  {
+    fill(circleColours[i]);// this will also go through the for loop until i=5 that is when the sattement wil be false and it will stop creating circles and changing it colours
+    noStroke();
+    ellipse(circleX[i], circleY[i], 70, 70);
   }
-  stroke(80, 53, 2);
-  strokeWeight(1.5);
-  line(100, 590, 900, 590); // this will create the line that seperates the data from the key which will be used to read the data
 
-  fill(80, 53, 2);
-  textAlign(CENTER);
-  textFont(Tittlefont, 20);
-  textSize(26);
-  text("Key", 500, 630);
+  for (int i = 0; i < 12; i++)
+  {
+    fill(diamondColours[i]);// the [i] tells processing which colour to look at first to start the loop
+    noStroke();
 
-  fill(80, 53, 2);
-  textAlign(LEFT);
-  textFont(Week, 16);
-  text("COSRX Salicylic Acid Cleanser", 165, 680);
-
-  fill(184, 111, 101);
-  noStroke();
-  ellipse(150, 675, 12, 12);
-
-  fill(80, 53, 2);
-  textAlign(LEFT);
-  textFont(Week, 16);
-  text("Medicube Vitamin C Toner Pads", 165, 710);
-
-  fill(255, 206, 113);
-  noStroke();
-  ellipse(150, 705, 12, 12);
-
-  fill(80, 53, 2);
-  textAlign(LEFT);
-  textFont(Week, 16);
-  text("Purito Retinol+Retinal serum", 165, 740);
-
-  fill(179, 125, 216);
-  noStroke();
-  ellipse(150, 735, 12, 12);
-
-  fill(80, 53, 2);
-  textAlign(LEFT);
-  textFont(Week, 16);
-  text("Skin1004 Probio-Cica Moisturiser", 165, 770);
-
-  fill(103, 85, 68);
-  noStroke();
-  ellipse(150, 765, 12, 12);
-
-  fill(80, 53, 2);
-  textAlign(LEFT);
-  textFont(Week, 16);
-  text("Nivea Thiamidol serum", 450, 770);
-
-  fill(252, 66, 188);
-  noStroke();
-  ellipse(440, 765, 12, 12);
-
-  fill(80, 53, 2);
-  textAlign(LEFT);
-  textFont(Week, 16);
-  text("Mixoon bean essence", 450, 740);
-
-  fill(107, 152, 115);
-  noStroke();
-  ellipse(440, 735, 12, 12);
-  
-   fill(80, 53, 2);
-  textAlign(LEFT);
-  textFont(Week, 16);
-  text("Whipped Ddalva Cleanser", 450, 710);
-
-  fill(255, 203, 237);
-  noStroke();
-  ellipse(440, 705, 12, 12);
-  
-   fill(80, 53, 2);
-  textAlign(LEFT);
-  textFont(Week, 16);
-  text("Hylaronic Acid eye patches", 450, 680);
-
-  fill(111, 170, 245);
-  noStroke();
-  ellipse(440, 675, 12, 12);
+    quad(
+      diamondX[i], diamondY[i]-40,
+      diamondX[i]+40, diamondY[i],
+      diamondX[i], diamondY[i]+40,
+      diamondX[i]-40, diamondY[i]
+      );
+  }
 }
