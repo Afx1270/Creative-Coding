@@ -53,6 +53,7 @@ int[] keyY = {
   155, 195, 235, 275, 315, 355, 395, 435, 475, 515, 555, 595
 };
 
+int selectedWeek = 1;
 
 void setup()
 {
@@ -74,6 +75,27 @@ void draw()
   text("Week 1", 400, 80);// sets subtittle for each week with the same font as the title
   text("Week 2", 500, 80);
   text("Week 3", 600, 80);
+
+  noFill();
+  stroke(255, 0, 0);
+  strokeWeight(2);
+
+  if (selectedWeek == 1)
+  {
+    rect(365, 58, 70, 30);
+  }
+
+  if (selectedWeek == 2)
+  {
+    rect(465, 58, 70, 30);
+  }
+
+  if (selectedWeek == 3)
+  {
+    rect(565, 58, 70, 30);
+  }
+
+  noStroke();
 
   for (int i = 0; i < 12; i++) // Repeats for every coordinate in the array,
     // increasing i by one each time to select the next position.
@@ -100,12 +122,12 @@ void draw()
     stroke(0);
     strokeWeight(2);
     fill(255);
-    rect(700, 75, 300, 600);
+    rect(700, 75, 300, 600); // this creates the white rectangle for the key
 
     fill(0);
     textAlign(LEFT);
     textSize(25);
-    text("SKINCARE KEY", 720, 115);
+    text("SKINCARE KEY", 720, 115);// this creates the title on the wirte rectangle
 
     textAlign(LEFT);
     textSize(16);
@@ -121,17 +143,40 @@ void draw()
     text("Hyaluronic Acid Eye Patches", 740, 520);
     text("Mixoon Bean Essence", 740, 560);
     text("Hypochlorous Acid Mist", 740, 600);
-    text("DAY", 740,645);
-    text("NIGHT",840,645);
+    //this creates a list of all the things that are included in the key (so all the names of the skincare brands)
+    text("DAY", 740, 645);
+    text("NIGHT", 840, 645);
     stroke(0);
     fill(255);
-    ellipse(800,638,20,20);
-    quad(910, 630, 920, 640, 910, 650, 900, 640);
-    
-    for (int i = 0; i < 12; i++)
+    ellipse(800, 638, 20, 20);
+    quad(910, 630, 920, 640, 910, 650, 900, 640); // this creates the shapes that diffrentiate day and night on the key with its labels
+
+    for (int i = 0; i < 12; i++)// thsi code repeats 12 times untill all the items from the array are used
     {
       fill(circleColours[i]);
       ellipse(keyX[i], keyY[i], 20, 20);
+      // this creates circles with the coresponding colours next to each skincare brand name to diffrentiate the brands
     }
+  }
+}
+
+void mousePressed()
+{
+  if (mouseX > 370 && mouseX < 430 &&
+    mouseY > 60 && mouseY < 90) // if the mouse is pressed in this area than the rectangle will appear 
+  {
+    selectedWeek = 1;
+  }
+
+  if (mouseX > 470 && mouseX < 530 &&
+    mouseY > 60 && mouseY < 90) // if the mouse is pressed in this area than the rectangle will appear 
+  {
+    selectedWeek = 2;
+  }
+
+  if (mouseX > 570 && mouseX < 630 &&
+    mouseY > 60 && mouseY < 90) // if the mouse is pressed in this area than the rectangle will appear 
+  {
+    selectedWeek = 3;
   }
 }
