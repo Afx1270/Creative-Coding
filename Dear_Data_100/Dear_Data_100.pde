@@ -55,6 +55,18 @@ int[] keyY = {
 
 int selectedWeek = 1;
 
+//Week 1 array data uses
+int[] week1DayUses = {
+  5, 2, 1, 5, 0, 3,
+  0, 5, 2, 0, 0, 0
+};
+
+int[] week1NightUses = {
+  5, 0, 0, 0, 7, 7,
+  7, 0, 2, 2, 1, 1
+};
+
+
 void setup()
 {
   size(1000, 750);
@@ -97,26 +109,32 @@ void draw()
 
   noStroke();
 
-  for (int i = 0; i < 12; i++) // Repeats for every coordinate in the array,
-    // increasing i by one each time to select the next position.
-  {
-    fill(circleColours[i]);// this will also go through the for loop until i=5 that is when the sattement wil be false and it will stop creating circles and changing it colours
-    noStroke();
-    ellipse(circleX[i], circleY[i], 70, 70);
+  for (int i = 0; i < 12; i++) {// Repeats for every coordinate in the array, increasing i by one each time to select the next position
+    if (week1DayUses[i] > 0) {// if the number of uses in the day is greater than 0 than do 20 + day usage x 8
+      float circleSize = 20 + week1DayUses[i]*10;// this will also go through the for loop until i=5 that is when the sattement wil be false and it will stop creating circles and changing it sizes
+
+      fill(circleColours[i]);
+      noStroke();
+      ellipse(circleX[i], circleY[i],
+        circleSize, circleSize);
+    }
+  }
+  for (int i = 0; i < 12; i++) {
+    if (week1NightUses[i] > 0) {
+      float diamondSize = 20 + week1NightUses[i]*10;
+
+      fill(diamondColours[i]);
+      noStroke();
+
+      quad(
+        diamondX[i], diamondY[i] - diamondSize/2,
+        diamondX[i] + diamondSize/2, diamondY[i],
+        diamondX[i], diamondY[i] + diamondSize/2,
+        diamondX[i] - diamondSize/2, diamondY[i]
+        );
+    }
   }
 
-  for (int i = 0; i < 12; i++)
-  {
-    fill(diamondColours[i]);// the [i] tells processing which colour to look at first to start the loop
-    noStroke();
-
-    quad(
-      diamondX[i], diamondY[i]-40,
-      diamondX[i]+40, diamondY[i],
-      diamondX[i], diamondY[i]+40,
-      diamondX[i]-40, diamondY[i]
-      );
-  }
   if (keyPressed && key == 'k')// if the key "k" is pressed and the and statement is true then draw a white box
   {
     stroke(0);
@@ -159,23 +177,23 @@ void draw()
     }
   }
 }
-
+// this makes a rectangle appear on the selected week
 void mousePressed()
 {
   if (mouseX > 370 && mouseX < 430 &&
-    mouseY > 60 && mouseY < 90) // if the mouse is pressed in this area than the rectangle will appear 
+    mouseY > 60 && mouseY < 90) // if the mouse is pressed in this area than the rectangle will appear
   {
     selectedWeek = 1;
   }
 
   if (mouseX > 470 && mouseX < 530 &&
-    mouseY > 60 && mouseY < 90) // if the mouse is pressed in this area than the rectangle will appear 
+    mouseY > 60 && mouseY < 90) // if the mouse is pressed in this area than the rectangle will appear
   {
     selectedWeek = 2;
   }
 
   if (mouseX > 570 && mouseX < 630 &&
-    mouseY > 60 && mouseY < 90) // if the mouse is pressed in this area than the rectangle will appear 
+    mouseY > 60 && mouseY < 90) // if the mouse is pressed in this area than the rectangle will appear
   {
     selectedWeek = 3;
   }
